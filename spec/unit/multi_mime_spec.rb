@@ -21,7 +21,6 @@ describe AssetSync::MultiMime do
   describe 'Mime::Type' do
 
     it 'should detect mime type' do
-      pending "Fails on Travis CI only as of https://travis-ci.org/rumblelabs/asset_sync/builds/4188196"
       require 'rails'
       AssetSync::MultiMime.lookup('css').should == "text/css"
     end

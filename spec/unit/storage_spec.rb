@@ -124,7 +124,7 @@ describe AssetSync::Storage do
       storage.stub(:get_remote_files).and_return(@remote_files)
       storage.stub(:upload_file).and_return(true)
 
-      mock_cdn = mock
+      mock_cdn = double
       Fog::CDN.should_receive(:new).and_return(mock_cdn)
       mock_cdn.should_receive(:post_invalidation).with("1234", ["/assets/local_image1.jpg"]).and_return(stub({:body => {:id => '1234'}}))
 
@@ -176,8 +176,8 @@ describe AssetSync::Storage do
       storage.stub(:local_files).and_return(@local_files)
       storage.stub(:get_remote_files).and_return(@remote_files)
       File.stub(:open).and_return('file') # Pretend they all exist
-      bucket = mock
-      files = mock
+      bucket = double
+      files = double
       storage.stub(:bucket).and_return(bucket)
       bucket.stub(:files).and_return(files)
 
